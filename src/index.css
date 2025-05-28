@@ -1,0 +1,74 @@
+:root {
+    --bg-color: #181419;
+    --primary-color: #9f3647;
+    --secondary-color: #ffc098;
+    --bg-input-color: #4f31572c;
+}
+
+/* Reglas Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', 'Sans-serif', 'System-UI';
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+h2 {
+    color: #FFF;
+    font-size: 2vw;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 120px auto;
+}
+
+.cards {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sección Banner */
+#banner {
+    background-image: url('');
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    box-shadow: inset 0 0 0 2000px rgba(84, 84, 84, 0.5);
+}
+
+.banner-card {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0px 160px;
+}
+
+
+/* Footer.css */
+#footer {
+    display:flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 20px;
+}
+
+#footer a:first-child {
+  color: #FFF; /* Blanco */
+}
+
+#footer a:last-child {
+  color: red;
+}
+
+#footer a:nth-child(2) {
+  color: green;
+}
