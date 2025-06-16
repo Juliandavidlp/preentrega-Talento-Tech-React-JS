@@ -12,7 +12,7 @@ function Productos({ products }){
         <div style={{display:"flex", gap:"20px", flexWrap:"wrap"}} class="cards">
             {
                 products.map((product) =>(
-                <Card style={{ width: '18rem'}} key={product.id}>
+                <Card style={{ width: '15rem'}} key={product.id}>
                     <Card.Img variant="top" src={product.image} alt={product.id}/>
                     <Card.Body>
                         <Card.Title>{product.title}</Card.Title>
