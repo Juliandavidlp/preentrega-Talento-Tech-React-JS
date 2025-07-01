@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 //Importo los componentes
 import Head from './components/Head.jsx';
-import HeaderNavbar from './components/Header-Navbar.jsx';
+import HeaderNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import LandingMain from './components/LandingMain.jsx';
 import Cards from './components/Cards.jsx';
@@ -40,7 +40,20 @@ function App() {
       <Cards products={products}/>
       <Footer/>
     </div>
+
+    // <div>
+    //   <Router>
+    //     <div>
+    //       <NavBar/>
+    //       <Routes>
+    //           <Route path='/' element={<Home/>}  />
+    //           <Route path='/about' element={<About/>}  />
+    //           <Route path='/contact' element={<Contact/>}  />
+    //       </Routes>
+    //     </div>
+    //   </Router>
+    // </div>
   )
 }
 
-export default App
+export default App;

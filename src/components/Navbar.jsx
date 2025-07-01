@@ -1,20 +1,19 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import react from 'react';
+import { Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-function HeaderNavbar() {
+function Navbar() {
   return (
     <div >
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar bg="dark" variant="dark" expand="lg" className="bg-body-tertiary">
         <Container>
-            <Navbar.Brand href="#home">Compumundo Hr</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">Compumundo Hr</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-                <Nav.Link href="#home">Inicio</Nav.Link>
-                <Nav.Link href="#link">Contacto</Nav.Link>
-                <Nav.Link href="#link">Carrito</Nav.Link>
+                <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+                <Nav.Link as={Link} to="/Contacto">Contacto</Nav.Link>
+                <Nav.Link as={Link} to="/Carrito">Carrito</Nav.Link>
 
                 <NavDropdown title="Admin" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Iniciar Sesión</NavDropdown.Item>
@@ -30,4 +29,4 @@ function HeaderNavbar() {
   );
 }
 
-export default HeaderNavbar;
+export default Navbar;
