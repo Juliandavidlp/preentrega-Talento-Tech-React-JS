@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 //Importo los componentes
 import Head from './components/Head.jsx';
-import HeaderNavbar from './components/Navbar.jsx';
+import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import LandingMain from './components/LandingMain.jsx';
 import Cards from './components/Cards.jsx';
@@ -34,11 +34,18 @@ function App() {
 
   return (
     <div>
-      <Head/>
-      <HeaderNavbar/>
-      <LandingMain/>
-      <Cards products={products}/>
-      <Footer/>
+      <Router>
+        <div>
+          <Head/>
+          <Navbar/>
+          <Routes>
+              <Route path='/' element={<Home/>}></Route>
+          </Routes>
+          <LandingMain/>
+          <Cards products={products}/>
+          <Footer/>
+        </div>
+      </Router>
     </div>
 
     // <div>
