@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 //Importo los componentes
 import Head from './components/Head.jsx';
@@ -39,7 +40,8 @@ function App() {
           <Head/>
           <Navbar/>
           <Routes>
-              <Route path='/' element={<Home/>}></Route>
+              <Route path='/' element={<Home/>} />
+
           </Routes>
           <LandingMain/>
           <Cards products={products}/>

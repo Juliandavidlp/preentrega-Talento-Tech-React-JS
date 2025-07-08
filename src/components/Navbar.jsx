@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import { Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -13,13 +13,14 @@ function Navbar() {
             <Nav className="ms-auto">
                 <Nav.Link as={Link} to="/">Inicio</Nav.Link>
                 <Nav.Link as={Link} to="/Contacto">Contacto</Nav.Link>
+                <Nav.Link></Nav.Link>
                 <Nav.Link as={Link} to="/Carrito">Carrito</Nav.Link>
 
                 <NavDropdown title="Admin" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Iniciar Sesión</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Registrarse</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="Iniciar-sesion">Iniciar Sesión</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="Registrarse">Registrarse</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Cerrar Sesión</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="Cerrar-sesion">Cerrar Sesión</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             </Navbar.Collapse>
