@@ -40,8 +40,13 @@ function App() {
           <Head/>
           <Navbar/>
           <Routes>
-              <Route path='/' element={<Home/>} />
-
+              <Route path='/' element={<Inicio/>} />
+              <Route path='/Contacto' element={<Contacto/>} />
+              <Route path='/Nosotros' element={<Nosotros/>} />
+              <Route path='/Carrito' element={<Carrito/>} />
+              <Route path='/Iniciar-sesión' element={<IniciarSesión/>} />
+              <Route path='/Registrarse' element={<Registrarse/>} />
+              <Route path='/Cerrar-sesión' element={<CerrarSesión/>} />
           </Routes>
           <LandingMain/>
           <Cards products={products}/>
