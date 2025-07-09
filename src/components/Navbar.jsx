@@ -13,7 +13,6 @@ function AppNavbar() {
             <Nav className="ms-auto">
                 <Nav.Link as={Link} to="/">Inicio</Nav.Link>
                 <Nav.Link as={Link} to="/Contacto">Contacto</Nav.Link>
-                <Nav.Link as={Link} to="/Nosotros">Nosotros</Nav.Link>
                 <Nav.Link as={Link} to="/Productos">Productos</Nav.Link>
                 <Nav.Link as={Link} to="/Carrito">Carrito</Nav.Link>
 

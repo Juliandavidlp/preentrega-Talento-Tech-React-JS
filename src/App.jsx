@@ -50,7 +50,6 @@ function App() {
           <AppNavbar/>
           <Routes>
               <Route path='/' element={<Inicio/>} />
-              <Route path='/Nosotros' element={<Nosotros/>} />
               <Route path='/Contacto' element={<Contacto/>} />
               <Route path='/Productos' element={<Productos products={ products }/>} />
               <Route path='/Carrito' element={<Carrito/>} />
