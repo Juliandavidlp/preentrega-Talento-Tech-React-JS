@@ -2,10 +2,10 @@ import React from 'react';
 import { Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function AppNavbar() {
   return (
     <div >
-        <Navbar bg="dark" variant="dark" expand="lg" className="bg-body-tertiary">
+        <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
             <Navbar.Brand as={Link} to="/">Compumundo Hr</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -30,4 +30,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default AppNavbar;

@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-//Importo los componentes
+//Importo las páginas y componentes
 import Head from './components/Head.jsx';
-import Navbar from './components/Navbar.jsx';
+import AppNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+import Inicio from './pages/Inicio.jsx';
+import Productos from './pages/Productos.jsx'
 import LandingMain from './components/LandingMain.jsx';
-import Cards from './components/Cards.jsx';
+import Cards from './pages/Productos.jsx';
 
 function App() {
     // Estados para almacenar los productos de la API y para indicar si los mismos se cargan o almacenar errores
@@ -38,18 +40,17 @@ function App() {
       <Router>
         <div>
           <Head/>
-          <Navbar/>
+          <AppNavbar/>
           <Routes>
               <Route path='/' element={<Inicio/>} />
-              <Route path='/Contacto' element={<Contacto/>} />
               <Route path='/Nosotros' element={<Nosotros/>} />
+              <Route path='/Contacto' element={<Contacto/>} />
+              <Route path='/Productos' element={<Productos products={ products }/>} />
               <Route path='/Carrito' element={<Carrito/>} />
               <Route path='/Iniciar-sesión' element={<IniciarSesión/>} />
               <Route path='/Registrarse' element={<Registrarse/>} />
               <Route path='/Cerrar-sesión' element={<CerrarSesión/>} />
           </Routes>
-          <LandingMain/>
-          <Cards products={products}/>
           <Footer/>
         </div>
       </Router>
