@@ -2,12 +2,21 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-//Importo las páginas y componentes
+// Importo los componentes básicos y de navegación
 import Head from './components/Head.jsx';
 import AppNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+
+// Importo las páginas
 import Inicio from './pages/Inicio.jsx';
-import Productos from './pages/Productos.jsx'
+import Productos from './pages/Productos.jsx';
+import Nosotros from './pages/Nosotros.jsx';
+import Contacto from './pages/Contacto.jsx';
+import Carrito from './pages/Carrito.jsx';
+import Registrarse from './pages/Registrarse.jsx';
+import IniciarSesión from './pages/IniciarSesión.jsx';
+import CerrarSesión from './pages/CerrarSesión.jsx';
+
 
 function App() {
     // Estados para almacenar los productos de la API y para indicar si los mismos se cargan o almacenar errores
