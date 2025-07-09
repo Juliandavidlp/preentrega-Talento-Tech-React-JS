@@ -10,7 +10,6 @@ import Footer from './components/Footer.jsx';
 // Importo las páginas
 import Inicio from './pages/Inicio.jsx';
 import Productos from './pages/Productos.jsx';
-import Nosotros from './pages/Nosotros.jsx';
 import Contacto from './pages/Contacto.jsx';
 import Carrito from './pages/Carrito.jsx';
 import Registrarse from './pages/Registrarse.jsx';
