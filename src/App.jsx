@@ -8,8 +8,6 @@ import AppNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Inicio from './pages/Inicio.jsx';
 import Productos from './pages/Productos.jsx'
-import LandingMain from './components/LandingMain.jsx';
-import Cards from './pages/Productos.jsx';
 
 function App() {
     // Estados para almacenar los productos de la API y para indicar si los mismos se cargan o almacenar errores
