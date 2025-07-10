@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Button, Card } from 'react-bootstrap';
 
 function Productos({ products }){
 
-    const [contador,setContador]=useState(0);
-    const [product,setProduct]=useState([]);
+    const [contador, setContador]=useState(0);
+    const [product, setProduct]=useState([]);
 
     return(
         <div>
