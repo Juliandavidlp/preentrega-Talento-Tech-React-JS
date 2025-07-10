@@ -15,6 +15,7 @@ import Carrito from './pages/Carrito.jsx';
 import Registrarse from './pages/Registrarse.jsx';
 import IniciarSesión from './pages/IniciarSesión.jsx';
 import CerrarSesión from './pages/CerrarSesión.jsx';
+import Perfil from './pages/Perfil.jsx';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
               <Route path='/Iniciar-sesión' element={<IniciarSesión/>} />
               <Route path='/Registrarse' element={<Registrarse/>} />
               <Route path='/Cerrar-sesión' element={<CerrarSesión/>} />
+              <Route path='/perfil/:id' element={<Perfil />} />
           </Routes>
           <Footer/>
         </div>
