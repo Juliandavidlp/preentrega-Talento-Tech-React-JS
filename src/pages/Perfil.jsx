@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 function Perfil(){
+    // Capturo el parámetro de la URL
     const { id } = useParams();
 
     // Forma larga

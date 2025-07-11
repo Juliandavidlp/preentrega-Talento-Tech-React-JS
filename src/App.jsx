@@ -56,7 +56,7 @@ function App() {
               <Route path='/Iniciar-sesión' element={<IniciarSesión/>} />
               <Route path='/Registrarse' element={<Registrarse/>} />
               <Route path='/Cerrar-sesión' element={<CerrarSesión/>} />
-              <Route path='/perfil/:id' element={<Perfil />} />
+              <Route path='/Perfil/:id' element={<Perfil />} />
           </Routes>
           <Footer/>
         </div>
