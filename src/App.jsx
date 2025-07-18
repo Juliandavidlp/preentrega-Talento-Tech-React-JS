@@ -24,7 +24,7 @@ function App() {
     const[loading, setLoading] = useState(true);
     const[error, setError] = useState(null);
 
-    // useEffect para realizar la llamada a la API
+    // Utilizo el hook useEffect() para realizar la llamada a la API
     useEffect(() => {
     // Hago el pedido a la API
       fetch('https://fakestoreapi.in/api/products?limit=6')
@@ -40,7 +40,7 @@ function App() {
           setError(err); // Guardo el error en el estado para mostrárselo al usuario
           setLoading(false); //La carga terminó, incluso si hubo un error
         });
-    }, []); // El array de dependencias vacío [] asegura que el useEffect se ejecute solo una vez.
+    }, []); // El array de dependencias vacío [] asegura que el useEffect se ejecute una vez sola.
 
   return (
     <div>
