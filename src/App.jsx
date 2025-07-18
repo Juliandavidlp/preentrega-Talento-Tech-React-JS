@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 // Importo los componentes básicos y de navegación
+import RutaProtegida from './components/RutaProtegida.jsx';
 import Head from './components/Head.jsx';
 import AppNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
@@ -16,6 +17,7 @@ import Registrarse from './pages/Registrarse.jsx';
 import IniciarSesión from './pages/IniciarSesión.jsx';
 import CerrarSesión from './pages/CerrarSesión.jsx';
 import Perfil from './pages/Perfil.jsx';
+import Administración from './pages/Administración.jsx';
 
 
 function App() {
@@ -49,32 +51,30 @@ function App() {
           <Head/>
           <AppNavbar/>
           <Routes>
-              <Route path='/' element={<Inicio/>} />
-              <Route path='/Contacto' element={<Contacto/>} />
-              <Route path='/Productos' element={<Productos products={ products }/>} />
-              <Route path='/Carrito' element={<Carrito/>} />
-              <Route path='/Iniciar-sesión' element={<IniciarSesión/>} />
-              <Route path='/Registrarse' element={<Registrarse/>} />
-              <Route path='/Cerrar-sesión' element={<CerrarSesión/>} />
-              <Route path='/Perfil/:id' element={<Perfil />} />
+              <Route path='/' element={<Inicio/>}/>
+              <Route path='/Contacto' element={<Contacto/>}/>
+              <Route path='/Productos' element={<Productos products={ products }/>}/>
+              <Route path='/Carrito' element={<Carrito/>}/>
+              <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
+              <Route path='/Registrarse' element={<Registrarse/>}/>
+              <Route path='/Cerrar-sesión' element={<CerrarSesión/>}/>
+              <Route path='/Perfil/:id' element={
+                <RutaProtegida>
+                  <Perfil/>
+                </RutaProtegida>
+                }
+              />
+              <Route path='/Administración' element={
+                <RutaProtegida>
+                  <Administración/>
+                </RutaProtegida>
+                }
+              />
           </Routes>
           <Footer/>
         </div>
       </Router>
     </div>
-
-    // <div>
-    //   <Router>
-    //     <div>
-    //       <NavBar/>
-    //       <Routes>
-    //           <Route path='/' element={<Home/>}  />
-    //           <Route path='/about' element={<About/>}  />
-    //           <Route path='/contact' element={<Contact/>}  />
-    //       </Routes>
-    //     </div>
-    //   </Router>
-    // </div>
   )
 }
 
