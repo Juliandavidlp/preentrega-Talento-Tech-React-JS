@@ -9,7 +9,7 @@ function IniciarSesión(){
     const handleLogin = (e) => {
         // Prevengo que el formulario recargue la página
         e.preventDefault();
-        // Acá iría la lógica para validar el usuario y contraseña contra una API
+        // Acá iría la lógica para validar el usuario y contraseña contra una API...
 
         // 1. Guardo en el navegador que el usuario está autenticado.
         localStorage.setItem('auth', 'true'); 
@@ -22,7 +22,7 @@ function IniciarSesión(){
         <div>
             <Container className="mt-4" style={{ maxWidth: 400 }}>
                 <h2>Iniciar Sesión</h2>
-                <p>Pagina para Iniciar Sesión de la aplicación</p>
+                <p>Pagina para Iniciar Sesión</p>
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3">
                         <Form.Label>Usuario</Form.Label>
