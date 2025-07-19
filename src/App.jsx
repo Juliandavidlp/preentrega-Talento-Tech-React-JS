@@ -57,7 +57,6 @@ function App() {
               <Route path='/Carrito' element={<Carrito/>}/>
               <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
               <Route path='/Registrarse' element={<Registrarse/>}/>
-              <Route path='/Cerrar-sesión' element={<CerrarSesión/>}/>
               <Route path='/Perfil/:id' element={
                 <RutaProtegida>
                   <Perfil/>
