@@ -2,8 +2,8 @@ import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 function Perfil(){
-    // Capturo el parámetro de la URL, desestructuro y extraigo la propiedad 'id' del objeto
-    const { id } = useParams();
+    // Capturo el parámetro de la URL, lo desestructuro y extraigo la propiedad 'usuario' del objeto.
+    const { usuario } = useParams();
 
     // Forma larga
     // const parametros = useParams(); // parametros sería { id: '123' }
@@ -12,7 +12,7 @@ function Perfil(){
         <div>
             <Container className="mt-4">
                 <h2>Perfil del Usuario</h2>
-                <p>Bienvenido, {id}</p>
+                <p>Bienvenido, {usuario}</p>
             </Container>
         </div>
     );

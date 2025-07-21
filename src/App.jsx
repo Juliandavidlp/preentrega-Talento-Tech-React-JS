@@ -1,6 +1,5 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Importo los componentes básicos y de navegación
 import RutaProtegida from './components/RutaProtegida.jsx';
@@ -15,7 +14,6 @@ import Contacto from './pages/Contacto.jsx';
 import Carrito from './pages/Carrito.jsx';
 import Registrarse from './pages/Registrarse.jsx';
 import IniciarSesión from './pages/IniciarSesión.jsx';
-import CerrarSesión from './pages/CerrarSesión.jsx';
 import Perfil from './pages/Perfil.jsx';
 import Administración from './pages/Administración.jsx';
 
@@ -57,7 +55,7 @@ function App() {
               <Route path='/Carrito' element={<Carrito/>}/>
               <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
               <Route path='/Registrarse' element={<Registrarse/>}/>
-              <Route path='/Perfil/:id' element={
+              <Route path='/Perfil/:usuario' element={
                 <RutaProtegida>
                   <Perfil/>
                 </RutaProtegida>
