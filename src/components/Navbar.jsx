@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function AppNavbar() {
   const isAuth = localStorage.getItem('auth') === 'true';
+  const user = localStorage.getItem('user');
   const navigate = useNavigate();
 
   // Función para cerrar sesión
@@ -29,7 +30,7 @@ function AppNavbar() {
                   {/* Un operador ternario */}
                   {isAuth ? (
                     <>
-                      <NavDropdown.Item as={Link} to="/Perfil">Perfil</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to={`/Perfil/${user}`}>Perfil</NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/Administración">Administración</NavDropdown.Item>
                       <NavDropdown.Divider/>
                       <NavDropdown.Item onClick={cerrarSesión}>Cerrar Sesión</NavDropdown.Item>

@@ -5,6 +5,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 function IniciarSesión(){
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState('');
+
     
     const handleLogin = (e) => {
         // Prevengo que el formulario recargue la página
@@ -13,6 +14,7 @@ function IniciarSesión(){
 
         // 1. Guardo en el navegador que el usuario está autenticado.
         localStorage.setItem('auth', 'true'); 
+        localStorage.setItem('user', usuario);
         // 2. Redirijo al usuario a su página de perfil.
         navigate(`/Perfil/${usuario || 'invitado'}`); // Uso el nombre de usuario en la URL, lo envío por medio de una ruta dinámica.
     }; 

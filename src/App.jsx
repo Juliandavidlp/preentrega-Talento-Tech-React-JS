@@ -56,9 +56,9 @@ function App() {
               <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
               <Route path='/Registrarse' element={<Registrarse/>}/>
               <Route path='/Perfil/:usuario' element={
-                <RutaProtegida>
+               
                   <Perfil/>
-                </RutaProtegida>
+                
                 }
               />
               <Route path='/Administración' element={
