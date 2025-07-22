@@ -1,0 +1,68 @@
+import { React, createContext, useState } from 'react';
+
+
+// Crear el contexto
+export const CarritoContext = createContext();
+
+// Crear el proveedor del contexto
+export function CarritoProvider({ children }) {
+    const [carrito, setCarrito] = useState([]);
+
+    const agregarAlCarrito = (producto) => {
+    // Sintaxis de propagación (Spread Syntax)
+    setCarrito([...carrito, producto]); 
+    };
+
+    const vaciarCarrito = () => {
+        setCarrito([]);
+    };
+
+    return(  
+        <CarritoContext.Provider value={{ carrito, agregarAlCarrito, vaciarCarrito }}>
+            {/*=> Object property shorthand */}
+            {children}
+        </CarritoContext.Provider>
+    );
+    
+}
+
+// Nota: La sintaxis de propagación crea un nuevo array a partir de los elementos que ya existen
+// en carrito y los "esparce", los "desempaqueta" y los agrega a la variable producto que le agrego.
+// ¿Por qué se hace esto? 
+// Porque no es una práctica recomendada modificar el estado de la aplicación 
+// directamente. Para poder modificar el estado con la función correspondiente al useState.
+
+
+// Por otro lado, la función createContext() de React no solo crea el objeto CarritoContext, 
+// sino que este objeto viene con dos componentes "adjuntos" de forma automática:
+
+// CarritoContext.Provider:
+//  Un componente que se usa para "envolver" a otros componentes.
+//  Su trabajo es proveer (hacer disponible) un valor a todos los componentes hijos que estén dentro de él,
+//  por lo que hay que pasarle la información que queremos compartir a través de la prop value.
+// CarritoContext.Consumer: Un componente (aunque hoy en día es más común usar el hook useContext) 
+// que permite a los componentes hijos consumir (leer) el valor que el Provider está proveyendo.
+// Entonces, CarritoContext.Provider no es algo que se importa de una librería, 
+// sino una propiedad del objeto CarritoContext que tú mismo creaste.
+
+
+// *** Object property shorthand ***
+
+// Sintaxis de propiedad abreviada: 
+// Crea un objeto a partir de variables. Por ej: const obj = { a, b };
+// Desestructuración: 
+// Extrae valores de un objeto a variables. Por ej: const { a, b } = obj;
+
+// Las llaves interiores {}: Estas son las que crean el objeto de JavaScript. 
+// La expresión { carrito, agregarAlCarrito, vaciarCarrito } es la sintaxis de propiedad abreviada que mencioné.
+//  Es un atajo moderno para escribir en JS: {
+//   carrito: carrito,
+//   agregarAlCarrito: agregarAlCarrito,
+//   vaciarCarrito: vaciarCarrito
+// }
+
+// Como los nombres de las claves (a la izquierda de los dos puntos) son iguales a los nombres de las variables (a la derecha), 
+// JavaScript permite acortarlo.
+
+// Entonces, en síntesis, estoy creando un único objeto que contiene todo lo que quieres compartir
+//  y se lo paso como el único valor permitido a la prop value.
