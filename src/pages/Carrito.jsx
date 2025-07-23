@@ -20,7 +20,7 @@ function Carrito() {
                         <p>No hay productos en el carrito.</p>
                 )
             }
-            {carrito.length > 0 && <button onClick={varciarCarrito}>Vaciar Carrito</button>}
+            {carrito.length > 0 && <button onClick={vaciarCarrito}>Vaciar Carrito</button>}
         </Container>
     );
 }
