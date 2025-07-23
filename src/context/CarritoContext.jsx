@@ -4,7 +4,7 @@ import { React, createContext, useState } from 'react';
 // Crear el contexto
 export const CarritoContext = createContext();
 
-// Proveedor del contexto
+// Proveedor del contexto (genero el componente contenedor o Wrapper)
 export function CarritoProvider({ children }) {
     const [carrito, setCarrito] = useState([]);
 
