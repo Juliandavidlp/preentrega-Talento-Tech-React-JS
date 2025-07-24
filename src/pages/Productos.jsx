@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React, { useContext } from 'react';
+import { CarritoContext } from '../context/CarritoContext.jsx';
 import { Button, Card } from 'react-bootstrap';
 
 function Productos({ products }){
-
-    const [contador, setContador]=useState(0);
-    const [product, setProduct]=useState([]);
+    //Uso useContext para agregarle productos al carrito:
+    const { agregarAlCarrito } = useContext(CarritoContext);
 
     return(
         <div>
@@ -19,7 +19,7 @@ function Productos({ products }){
                     </div>
                 </section> 
             </div>
-            <div style={{display:"flex", gap:"20px", flexWrap:"wrap"}} class="cards">
+            <div style={{display:"flex", gap:"20px", flexWrap:"wrap"}} className="cards">
                 {
                     products.map((product) =>(
                     <Card style={{ width: '15rem'}} key={product.id}>
@@ -28,7 +28,7 @@ function Productos({ products }){
                             <Card.Title>{product.title}</Card.Title>
                             <Card.Text>Model: {product.model}</Card.Text>
                             <Card.Text>Price: ${product.price}</Card.Text>
-                            <Button variant="primary" onClick={()=>{setContador(contador+1), setProduct(product.id)}}>Agregar al carrito</Button>
+                            <Button variant="primary" onClick={() => agregarAlCarrito(product.id, 1)}>Agregar al carrito</Button>
                         </Card.Body>
                     </Card>
                     ))
