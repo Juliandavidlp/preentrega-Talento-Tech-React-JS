@@ -16,6 +16,7 @@ export function CarritoProvider({ children }) {
             // Si el producto ya está en el carrito, actualizo su cantidad
             const carritoActualizado = carrito.map((item) => 
                 item.id === producto.id
+                // Uso sintaxis de propagación (Spread Syntax)
                 ? { ...item, quantity: item.quantity + cantidad }
                 : item
             );
@@ -23,7 +24,6 @@ export function CarritoProvider({ children }) {
             } 
             else {
                 // Si el producto no está, lo agrego al carrrito con la cantidad especificada
-                // Uso sintaxis de propagación (Spread Syntax) dos veces 
                 setCarrito([...carrito, { ...producto, quantity: cantidad}]);
             }
         };
@@ -45,10 +45,10 @@ export function CarritoProvider({ children }) {
 
 // La sintaxis de propagación (Spread Syntax) 
 // Crea un nuevo array u objeto a partir de los elementos que ya existen
-// y los "esparce", los "desempaqueta" y los agrega a la variable que le agrego.
+// y los "esparce", los "desempaqueta" y los agrega a la variable o clave que le agrego.
 // ¿Por qué se hace esto? Porque no es una práctica recomendada modificar el estado de la aplicación directamente. 
 
-// En el caso hago dos cosas para mantener la inmutabilidad:
+// En el segundo caso hago dos cosas para mantener la inmutabilidad:
 // Primero creo un nuevo array para el estado del carrito. Después creo un nuevo objeto dentro del array.
 
 
