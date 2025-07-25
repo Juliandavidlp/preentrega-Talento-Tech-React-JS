@@ -1,4 +1,4 @@
-import { React, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
 
 // Crear el contexto
@@ -6,11 +6,28 @@ export const CarritoContext = createContext();
 
 // Proveedor del contexto (genero el componente contenedor o Wrapper)
 export function CarritoProvider({ children }) {
+    // Estado del carrito (un array de objetos donde cada objeto contiene información del producto)
     const [carrito, setCarrito] = useState([]);
 
-    const agregarAlCarrito = (producto) => {
-    // ...carrito: Sintaxis de propagación (Spread Syntax)
-    setCarrito([...carrito, producto]); 
+    const agregarAlCarrito = (producto, cantidad) => {
+        const productoEnElCarrito = carrito.find((item) => item.id === producto.id);
+
+        if (productoEnElCarrito) {
+            // Si el producto ya está en el carrito, actualizo su cantidad
+            const carritoActualizado = carrito.map((item) => 
+                item.id === producto.id
+                ? { ...item, quantity: item.quantity + cantidad }
+                : item
+            );
+            setCarrito(carritoActualizado);
+            } 
+            else {
+                // Si el producto no está, lo agrego al carrrito con la cantidad especificada
+                // Uso sintaxis de propagación (Spread Syntax) dos veces 
+                setCarrito([...carrito, { ...producto, quantity: cantidad}]);
+            }
+        };
+    
     };
 
     const vaciarCarrito = () => {
@@ -26,9 +43,14 @@ export function CarritoProvider({ children }) {
     
 }
 
-// Nota: La sintaxis de propagación crea un nuevo array a partir de los elementos que ya existen
-// en carrito y los "esparce", los "desempaqueta" y los agrega a la variable producto que le agrego.
+// La sintaxis de propagación (Spread Syntax) 
+// Crea un nuevo array u objeto a partir de los elementos que ya existen
+// y los "esparce", los "desempaqueta" y los agrega a la variable que le agrego.
 // ¿Por qué se hace esto? Porque no es una práctica recomendada modificar el estado de la aplicación directamente. 
+
+// En el caso hago dos cosas para mantener la inmutabilidad:
+// Primero creo un nuevo array para el estado del carrito. Después creo un nuevo objeto dentro del array.
+
 
 // ¿Qué hace carritoContext()?
 // La función createContext() de React no solo crea el objeto CarritoContext, 

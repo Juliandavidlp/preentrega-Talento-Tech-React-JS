@@ -8,7 +8,7 @@ function Carrito() {
     return(
         <Container className="mt-4">
             <h1>Carrito de Compras</h1>
-            {/* Lógica para mostrar los productos a través de un operador ternario */}
+            {/* Lógica para mostrar los productos del carrito con un operador ternario */}
             {carrito.length > 0 ? (
                 <ul>
                     {carrito.map((product, index) => (
