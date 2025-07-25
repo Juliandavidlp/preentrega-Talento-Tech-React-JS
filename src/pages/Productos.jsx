@@ -28,7 +28,7 @@ function Productos({ products }){
                             <Card.Title>{product.title}</Card.Title>
                             <Card.Text>Model: {product.model}</Card.Text>
                             <Card.Text>Price: ${product.price}</Card.Text>
-                            <Button variant="primary" onClick={() => agregarAlCarrito(product.id, 1)}>Agregar al carrito</Button>
+                            <Button variant="primary" onClick={() => agregarAlCarrito(product, 1)}>Agregar al carrito</Button>
                         </Card.Body>
                     </Card>
                     ))
