@@ -28,8 +28,6 @@ export function CarritoProvider({ children }) {
             }
         };
     
-    };
-
     const vaciarCarrito = () => {
         setCarrito([]);
     };
@@ -39,9 +37,8 @@ export function CarritoProvider({ children }) {
             {/*=> Object property shorthand */}
             {children}
         </CarritoContext.Provider>
-    );
-    
-}
+    )
+};
 
 // La sintaxis de propagación (Spread Syntax) 
 // Crea un nuevo array u objeto a partir de los elementos que ya existen
