@@ -1,43 +1,79 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Form, Button } from 'react-bootstrap';
+import { useAuth } from '..context/AuthContext.jsx';
+import { Form, Button, Container, Alert, Card } from 'react-bootstrap';
 
-function IniciarSesión(){
-    const navigate = useNavigate();
+export default function IniciarSesión()
+{
     const [usuario, setUsuario] = useState('');
+    const [contraseña, setContraseña] = useState('');
+    const [error, setError] = useState('');
+    const { iniciarSesión } = useAuth();
+    const navigate = useNavigate();
 
-    
     const handleLogin = (e) => {
         // Prevengo que el formulario recargue la página
         e.preventDefault();
+
         // Acá iría la lógica para validar el usuario y contraseña contra una API...
+        if (iniciarSesión(usuario, contraseña)){
+            navigate(`/Perfil/${usuario}`)
+        }
+        else {
+            setError('Usuario o contraseña inválidos');
+        }
 
         // 1. Guardo en el navegador que el usuario está autenticado.
-        localStorage.setItem('auth', 'true'); 
-        localStorage.setItem('user', usuario);
+        // localStorage.setItem('auth', 'true'); 
+        // localStorage.setItem('user', usuario);
+        
         // 2. Redirijo al usuario a su página de perfil.
-        navigate(`/Perfil/${usuario || 'invitado'}`); // Uso el nombre de usuario en la URL, lo envío por medio de una ruta dinámica.
+        // navigate(`/Perfil/${usuario || 'invitado'}`); // Uso el nombre de usuario en la URL, lo envío por medio de una ruta dinámica.
     }; 
 
-
     return(
-        <div>
-            <Container className="mt-4" style={{ maxWidth: 400 }}>
-                <h2>Iniciar Sesión</h2>
-                <p>Pagina para Iniciar Sesión</p>
+        
+        <Container className="d-flex justify-content-center align-items-center vh-100">
+            <h2>Iniciar Sesión</h2>
+            <p>Pagina para Iniciar Sesión</p>
+
+            <Card style={{ width: "24rem" }}>
+                <Card.Body>
+                <Card.Title className="mb-4 text-center">Login</Card.Title>
+                {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3">
-                        <Form.Label>Usuario</Form.Label>
-                        <Form.Control type="text" value={usuario} onChange={(e) => setUsuario(e.target.value)} placeholder="Escribe tu nombre de usuario" />
+                    <Form.Label>Usuario</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Escribe tu nombre de usuario"
+                        value={usuario}
+                        onChange={(e) => {
+                        setUser(e.target.value);
+                        if (error) setError("");
+                           }}
+                    />
                     </Form.Group>
+
                     <Form.Group className="mb-3">
-                        <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" placeholder="Contraseña" />
+                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Ingrese su contraseña"
+                        value={pass}
+                        onChange={(e) => {
+                        setPass(e.target.value);
+                        if (error) setError("");
+                        }}
+                    />
                     </Form.Group>
-                    <Button variant="primary" type="submit">Entrar</Button>
+
+                    <Button variant="primary" type="submit" className="w-100">
+                    Ingresar
+                    </Button>
                 </Form>
-            </Container>
-        </div>
+                </Card.Body>
+            </Card>
+        </Container>
     );
 }
-export default IniciarSesión; 
