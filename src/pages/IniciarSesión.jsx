@@ -44,7 +44,7 @@ export default function IniciarSesión()
                         onChange={(e) => {
                         setUser(e.target.value);
                         if (error) setError("");
-                           }}
+                        }}
                     />
                     </Form.Group>
 
