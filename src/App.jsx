@@ -37,7 +37,7 @@ function App() {
         })
         .catch(err => {
           // Capturo cualquier error de red o de procesamiento
-          console.err("Hubo un error al obtener los datos:", err);
+          console.error("Hubo un error al obtener los datos:", err);
           setError(err); // Guardo el error en el estado para mostrárselo al usuario
           setLoading(false); //La carga terminó, incluso si hubo un error
         });
