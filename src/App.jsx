@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { AuthProvider } from './context/AuthContext.jsx';
+import RutaProtegida from './components/RutaProtegida.jsx';
 
 // Importo los componentes básicos y de navegación
-import RutaProtegida from './components/RutaProtegida.jsx';
 import Head from './components/Head.jsx';
 import AppNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
@@ -43,35 +44,37 @@ function App() {
     }, []); // El array de dependencias vacío [] asegura que el useEffect se ejecute una vez sola.
 
   return (
-    <div>
-      <Router>
-        <div>
-          <Head/>
-          <AppNavbar/>
-          <Routes>
-              <Route path='/' element={<Inicio/>}/>
-              <Route path='/Contacto' element={<Contacto/>}/>
-              <Route path='/Productos' element={<Productos products={ products }/>}/>
-              <Route path='/Carrito' element={<Carrito/>}/>
-              <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
-              <Route path='/Registrarse' element={<Registrarse/>}/>
-              <Route path='/Perfil/:usuario' element={
-               
-                  <Perfil/>
-                
-                }
-              />
-              <Route path='/Administración' element={
-                <RutaProtegida>
-                  <Administración/>
-                </RutaProtegida>
-                }
-              />
-          </Routes>
-          <Footer/>
-        </div>
-      </Router>
-    </div>
+    <>
+      <AuthProvider>
+        <Router>
+          <div>
+            <Head/>
+            <AppNavbar/>
+            <Routes>
+                <Route path='/' element={<Inicio/>}/>
+                <Route path='/Contacto' element={<Contacto/>}/>
+                <Route path='/Productos' element={<Productos products={ products }/>}/>
+                <Route path='/Carrito' element={<Carrito/>}/>
+                <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
+                <Route path='/Registrarse' element={<Registrarse/>}/>
+                <Route path='/Perfil/:usuario' element={
+                  <RutaProtegida>
+                    <Perfil/>
+                  </RutaProtegida>
+                  }
+                />
+                <Route path='/Administración' element={
+                  <RutaProtegida>
+                    <Administración/>
+                  </RutaProtegida>
+                  }
+                />
+            </Routes>
+            <Footer/>
+          </div>
+        </Router>
+      </AuthProvider>
+    </>
   )
 }
 
