@@ -1,15 +1,15 @@
 import React from 'react';
+import { useAuth } from '../context/AuthContext.jsx';
 import { Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 function AppNavbar() {
-  const isAuth = localStorage.getItem('auth') === 'true';
-  const user = localStorage.getItem('user');
+  const { token, usuario, cerrarSesión } = useAuth();
   const navigate = useNavigate();
 
   // Función para cerrar sesión
-  const cerrarSesión= () => {
-    localStorage.removeItem('auth');
+  const handleLogout= () => {
+    cerrarSesión();
     navigate('/Iniciar-sesión');
   }
 
@@ -28,12 +28,12 @@ function AppNavbar() {
 
                 <NavDropdown title="Mi Cuenta" id="basic-nav-dropdown">
                   {/* Un operador ternario */}
-                  {isAuth ? (
+                  {token ? (
                     <>
-                      <NavDropdown.Item as={Link} to={`/Perfil/${user}`}>Perfil</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to={`/Perfil/${usuario}`}>Perfil</NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/Administración">Administración</NavDropdown.Item>
                       <NavDropdown.Divider/>
-                      <NavDropdown.Item onClick={cerrarSesión}>Cerrar Sesión</NavDropdown.Item>
+                      <NavDropdown.Item onClick={handleLogout}>Cerrar Sesión</NavDropdown.Item>
                     </>
                     ) : (
                       <>

@@ -27,12 +27,12 @@ export default function IniciarSesión()
     return(
         
         <Container className="d-flex justify-content-center align-items-center vh-100">
-            <h2>Iniciar Sesión</h2>
-            <p>Pagina para Iniciar Sesión</p>
+            {/* <h2>Iniciar Sesión</h2>
+            <p>Pagina para Iniciar Sesión</p> */}
 
             <Card style={{ width: "24rem" }}>
                 <Card.Body>
-                <Card.Title className="mb-4 text-center">Login</Card.Title>
+                <Card.Title className="mb-4 text-center">Iniciar Sesión</Card.Title>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3">
@@ -42,7 +42,7 @@ export default function IniciarSesión()
                         placeholder="Escribe tu nombre de usuario"
                         value={usuario}
                         onChange={(e) => {
-                        setUser(e.target.value);
+                        setUsuario(e.target.value);
                         if (error) setError("");
                         }}
                     />
@@ -53,9 +53,9 @@ export default function IniciarSesión()
                     <Form.Control
                         type="password"
                         placeholder="Ingrese su contraseña"
-                        value={pass}
+                        value={contraseña}
                         onChange={(e) => {
-                        setPass(e.target.value);
+                        setContraseña(e.target.value);
                         if (error) setError("");
                         }}
                     />
