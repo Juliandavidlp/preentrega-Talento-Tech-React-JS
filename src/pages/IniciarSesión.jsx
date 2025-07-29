@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '..context/AuthContext.jsx';
+import { useAuth } from '../context/AuthContext';
 import { Form, Button, Container, Alert, Card } from 'react-bootstrap';
 
 export default function IniciarSesión()

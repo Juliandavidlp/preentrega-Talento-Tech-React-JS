@@ -48,4 +48,4 @@ export function AuthProvider({ children }){
 
 // Creo un custom hook (o hook personalizado)
 // useAuthContext es un hook personalizdo que permite acceder al estado de autentificación 
-export const useAuthContext = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);
