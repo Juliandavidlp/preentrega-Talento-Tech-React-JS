@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* Envuelvo la aplicación en el proveedor de contexto*/}
+    {/* Envuelvo la aplicación en el proveedor de contexto del carrito*/}
     <CarritoProvider> 
       <App/>
     </CarritoProvider>
