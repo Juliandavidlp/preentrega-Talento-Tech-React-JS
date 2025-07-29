@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
-import { useAuthContext } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function RutaProtegida({ children }){
-    const { token } = useAuthContext();
+    const { token } = useAuth();
     return token ? children : <Navigate to="/Iniciar-sesión" replace/>;
 }
 

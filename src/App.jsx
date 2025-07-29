@@ -47,7 +47,6 @@ function App() {
     <>
       <AuthProvider>
         <Router>
-          <div>
             <Head/>
             <AppNavbar/>
             <Routes>
@@ -71,7 +70,6 @@ function App() {
                 />
             </Routes>
             <Footer/>
-          </div>
         </Router>
       </AuthProvider>
     </>
