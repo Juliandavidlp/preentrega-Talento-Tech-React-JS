@@ -8,7 +8,7 @@ function AppNavbar() {
   const navigate = useNavigate();
 
   // Función para cerrar sesión
-  const handleLogout= () => {
+  const handleCerrarSesión = () => {
     cerrarSesión();
     navigate('/Iniciar-sesión');
   }
@@ -33,7 +33,7 @@ function AppNavbar() {
                       <NavDropdown.Item as={Link} to={`/Perfil/${usuario}`}>Perfil</NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/Administración">Administración</NavDropdown.Item>
                       <NavDropdown.Divider/>
-                      <NavDropdown.Item onClick={handleLogout}>Cerrar Sesión</NavDropdown.Item>
+                      <NavDropdown.Item onClick={handleCerrarSesión}>Cerrar Sesión</NavDropdown.Item>
                     </>
                     ) : (
                       <>
