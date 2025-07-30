@@ -7,6 +7,7 @@ import RutaProtegida from './components/RutaProtegida.jsx';
 import Head from './components/Head.jsx';
 import AppNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+import AdminListaDeProductos from './components/ListadeProductos.jsx';
 
 // Importo las páginas
 import Inicio from './pages/Inicio.jsx';
