@@ -61,6 +61,8 @@ function App() {
     };
 
     const eliminarProducto = (id) => {
+      // El método objet.filter() de JS filtra o excluye un elemento de un objeto iterable 
+      // y a partir de una comparación genera un nuevo array.
       setProductos(productos.filter(p => p.id !== id));
     };
 
@@ -94,13 +96,13 @@ function App() {
                         <Container className="my-4">
                           <h2>Gestion de Productos</h2>
                           <ProductoForm
-                            onSubmit={productoAEditar ? actualizarProducto : agregarProducto}
-                            productoAEditar={productoAEditar}
+                            onSubmit={productoaEditar ? actualizarProducto : agregarProducto}
+                            productoAEditar={productoaEditar}
                             onCancel={() => setProductoAEditar(null)}
                           />
                           <hr/>
-                          <ListaProductos
-                            productos={productos}
+                          <AdminListaDeProductos
+                            productosAdm={productos}
                             onEdit={editarProducto}
                             onDelete={eliminarProducto}
                           />
