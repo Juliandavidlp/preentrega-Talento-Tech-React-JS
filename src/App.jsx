@@ -43,37 +43,78 @@ function App() {
         });
     }, []); // El array de dependencias vacío [] asegura que el useEffect se ejecute una vez sola.
 
-  return (
-    <>
-      <AuthProvider>
-        <Router>
-            <Head/>
-            <AppNavbar/>
-            <Routes>
-                <Route path='/' element={<Inicio/>}/>
-                <Route path='/Contacto' element={<Contacto/>}/>
-                <Route path='/Productos' element={<Productos products={ products }/>}/>
-                <Route path='/Carrito' element={<Carrito/>}/>
-                <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
-                <Route path='/Registrarse' element={<Registrarse/>}/>
-                <Route path='/Perfil/:usuario' element={
-                  <RutaProtegida>
-                    <Perfil/>
-                  </RutaProtegida>
-                  }
-                />
-                <Route path='/Administración' element={
-                  <RutaProtegida>
-                    <Administración/>
-                  </RutaProtegida>
-                  }
-                />
-            </Routes>
-            <Footer/>
-        </Router>
-      </AuthProvider>
-    </>
-  )
-}
+
+    // Lógica del CRUD de productos para el administrador
+    const [productos, setProductos] = useState([]);
+    const [productoaEditar, setProductoaEditar] = useState(null);
+    const [contadorId, setContadorId] = useState(1);
+
+    const agregarProducto = (producto) => {
+      const nuevoProducto = { ...producto, id: contadorId };
+      setProductos([...productos, nuevoProducto]);
+      setContadorId(contadorId + 1);
+    };
+
+    const actualizarProducto = (productoActualizado) => {
+      setProductos(productos.map(p => (p.id === productoActualizado.id ? productoActualizado : p)));
+      setProductoaEditar(null);
+    };
+
+    const eliminarProducto = (id) => {
+      setProductos(productos.filter(p => p.id !== id));
+    };
+
+    const editarProducto = (producto) => {
+      setProductoaEditar(producto);
+    };
+
+
+    return (
+      <>
+        <AuthProvider>
+          <Router>
+              <Head/>
+              <AppNavbar/>
+              <Routes>
+                  <Route path='/' element={<Inicio/>}/>
+                  <Route path='/Contacto' element={<Contacto/>}/>
+                  <Route path='/Productos' element={<Productos products={ products }/>}/>
+                  <Route path='/Carrito' element={<Carrito/>}/>
+                  <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
+                  <Route path='/Registrarse' element={<Registrarse/>}/>
+                  <Route path='/Perfil/:usuario' element={
+                    <RutaProtegida>
+                      <Perfil/>
+                    </RutaProtegida>
+                    }
+                  />
+                  <Route path='/Administración' element={
+                    <RutaProtegida>
+                      <Administración>
+                        <Container className="my-4">
+                          <h2>Gestion de Productos</h2>
+                          <ProductoForm
+                            onSubmit={productoAEditar ? actualizarProducto : agregarProducto}
+                            productoAEditar={productoAEditar}
+                            onCancel={() => setProductoAEditar(null)}
+                          />
+                          <hr/>
+                          <ListaProductos
+                            productos={productos}
+                            onEdit={editarProducto}
+                            onDelete={eliminarProducto}
+                          />
+                        </Container>
+                      </Administración>
+                    </RutaProtegida>
+                    }
+                  />
+              </Routes>
+              <Footer/>
+          </Router>
+        </AuthProvider>
+      </>
+    )
+  }
 
 export default App;
