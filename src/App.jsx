@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { AuthProvider } from './context/AuthContext.jsx';
 import RutaProtegida from './components/RutaProtegida.jsx';
+import { Container } from 'react-bootstrap';
 
 // Importo los componentes básicos y de navegación
 import Head from './components/Head.jsx';
 import AppNavbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import AdminListaDeProductos from './components/ListadeProductos.jsx';
+import ProductoForm from './components/ProductoForm.jsx';
 
 // Importo las páginas
 import Inicio from './pages/Inicio.jsx';
@@ -21,8 +23,8 @@ import Administración from './pages/Administración.jsx';
 
 
 function App() {
-    // Estados para almacenar los productos de la API y para indicar si los mismos se cargan o almacenar errores
-    const[products, setProducts] = useState([]);
+    // Lógica del CRUD de productos para el administrador
+    const [productos, setProductos] = useState([]);
     const[loading, setLoading] = useState(true);
     const[error, setError] = useState(null);
 
@@ -33,7 +35,7 @@ function App() {
         .then(res => res.json()) // Parseo la respuesta JSON
         .then(data => {
           console.log("Respuesta completa de la API (objeto 'data'):", data);
-          setProducts(data.products);
+          setProductos(data.products); // Usamos el estado unificado 'productos'
           setLoading(false); //La carga terminó
         })
         .catch(err => {
@@ -45,15 +47,14 @@ function App() {
     }, []); // El array de dependencias vacío [] asegura que el useEffect se ejecute una vez sola.
 
 
-    // Lógica del CRUD de productos para el administrador
-    const [productos, setProductos] = useState([]);
     const [productoaEditar, setProductoaEditar] = useState(null);
-    const [contadorId, setContadorId] = useState(1);
 
     const agregarProducto = (producto) => {
-      const nuevoProducto = { ...producto, id: contadorId };
+      // Generamos un nuevo ID seguro, encontrando el máximo ID actual y sumándole 1
+      const maxId = productos.reduce((max, p) => (p.id > max ? p.id : max), 0);
+      const nuevoProducto = { ...producto, id: maxId + 1 };
+
       setProductos([...productos, nuevoProducto]);
-      setContadorId(contadorId + 1);
     };
 
     const actualizarProducto = (productoActualizado) => {
@@ -81,7 +82,7 @@ function App() {
               <Routes>
                   <Route path='/' element={<Inicio/>}/>
                   <Route path='/Contacto' element={<Contacto/>}/>
-                  <Route path='/Productos' element={<Productos products={ products }/>}/>
+                  <Route path='/Productos' element={<Productos products={ productos }/>}/>
                   <Route path='/Carrito' element={<Carrito/>}/>
                   <Route path='/Iniciar-sesión' element={<IniciarSesión/>}/>
                   <Route path='/Registrarse' element={<Registrarse/>}/>
@@ -94,20 +95,18 @@ function App() {
                   <Route path='/Administración' element={
                     <RutaProtegida>
                       <Administración>
-                        <Container className="my-4">
-                          <h2>Gestion de Productos</h2>
-                          <ProductoForm
-                            onSubmit={productoaEditar ? actualizarProducto : agregarProducto}
-                            productoAEditar={productoaEditar}
-                            onCancel={() => setProductoaEditar(null)}
-                          />
-                          <hr/>
-                          <AdminListaDeProductos
-                            productosAdm={productos}
-                            onEdit={editarProducto}
-                            onDelete={eliminarProducto}
-                          />
-                        </Container>
+                        <h2>Gestion de Productos</h2>
+                        <ProductoForm
+                          onSubmit={productoaEditar ? actualizarProducto : agregarProducto}
+                          productoAEditar={productoaEditar}
+                          onCancel={() => setProductoaEditar(null)}
+                        />
+                        <hr/>
+                        <AdminListaDeProductos
+                          productosAdm={productos}
+                          onEdit={editarProducto}
+                          onDelete={eliminarProducto}
+                        />
                       </Administración>
                     </RutaProtegida>
                     }

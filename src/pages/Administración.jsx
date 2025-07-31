@@ -1,10 +1,14 @@
-import { Container } from 'react-bootstrap'
+import React from 'react';
+import { Container } from 'react-bootstrap';
 
-export default function Administración(){
-    return(
-        <Container className="mt-4">
-            <h1>Administración</h1>
-            <p>Pagina de Administración de la aplicación</p>
-        </Container>
-    );
+function Administración({ children }) {
+  return (
+    <Container className="my-4">
+      {/* Ahora la página de Administración es responsable de su propio layout,
+          incluyendo el contenedor principal. */}
+      {children}
+    </Container>
+  );
 }
+
+export default Administración;
