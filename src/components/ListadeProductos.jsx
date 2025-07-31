@@ -21,7 +21,7 @@ function AdminListaDeProductos({ productosAdm, onEdit, onDelete}){
                     <tr key={id}>
                         <td>{id}</td>
                         <td>{nombre}</td>
-                        <td>{precio.toFixed(2)}</td>
+                        <td>{precio?.toFixed(2) ?? 'N/A'}</td>
                         <td>
                             <Button variant="warning" size="sm" className="me-2" 
                                 onClick={() => onEdit({ id, nombre, precio })}>

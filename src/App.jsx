@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { AuthProvider } from './context/AuthContext.jsx';
 import RutaProtegida from './components/RutaProtegida.jsx';
-import { Container } from 'react-bootstrap';
 
 // Importo los componentes básicos y de navegación
 import Head from './components/Head.jsx';
