@@ -1,12 +1,12 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { Formulario } from '../components/Formulario.jsx';
 
 function Contacto(){
     return(
         <div>
             <Container className="mt-4">
-                <h1>Contacto</h1>
-                <p>Formulario de contacto</p>
+                <Formulario/>
             </Container>
         </div>
     );
