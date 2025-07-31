@@ -99,7 +99,7 @@ function App() {
                           <ProductoForm
                             onSubmit={productoaEditar ? actualizarProducto : agregarProducto}
                             productoAEditar={productoaEditar}
-                            onCancel={() => setProductoAEditar(null)}
+                            onCancel={() => setProductoaEditar(null)}
                           />
                           <hr/>
                           <AdminListaDeProductos

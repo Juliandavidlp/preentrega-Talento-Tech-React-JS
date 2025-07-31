@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 
-function ProductoForm({ onSubmit, productoAeditar, onCancel}){
+function ProductoForm({ onSubmit, productoAEditar, onCancel}){
     const [nombre, setNombre] = useState('');
     const [precio, setPrecio] = useState('');
     const [errores, setErrores] = useState([]);
